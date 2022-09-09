@@ -16,8 +16,10 @@ class StringCalculator {
                 String delimiter = m.group().replaceAll(regex, "\\\\$1");
                 delimiters += delimiter+"|";
             }
-            if (delimiters.length() == 0)
+            if (delimiters.length() == 0) {
                 delimiters += number.charAt(2);
+                delimiters = delimiters.replaceAll(regex, "\\\\$1");
+            }
             else
                 delimiters = delimiters.substring(0, delimiters.length() - 1);
             number = part2[1];
