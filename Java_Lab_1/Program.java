@@ -17,7 +17,7 @@ class StringCalculator {
                 delimiters += delimiter+"|";
             }
             if (delimiters.length() == 0) {
-                delimiters += number.charAt(2);
+                delimiters = part2[0].substring(2, part2[0].length());
                 delimiters = delimiters.replaceAll(regex, "\\\\$1");
             }
             else
