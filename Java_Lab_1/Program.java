@@ -8,7 +8,7 @@ class StringCalculator {
             return 0;
 
         String delimiters = "";
-        String regex = "([+\\-!\\(\\){}\\[\\]^\"~*?:\\\\]|[&\\|])";
+        String regex = "([$+\\-!\\(\\){}\\[\\]^\"~*?:\\\\]|[&\\|])";
         if (number.charAt(0) == '/') {
             String[] part2 = number.split("\\\\n");
             Matcher m = Pattern.compile("(?<=\\[)[^]]+").matcher(part2[0]);
