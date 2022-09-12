@@ -1,9 +1,11 @@
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 class StringCalculator {
     private String regex = "([$+\\-!\\(\\){}\\[\\]^\"~*?:\\\\.]|[&\\|])";
+    private ArrayList <String> listDelimiters = new ArrayList<String>();
 
     class MyException extends Exception {
         MyException(String msg) {
@@ -11,19 +13,19 @@ class StringCalculator {
         }
     }
 
-    private String split_delimiters(String allDelimiters, String selectedDelimiters) {
+    private String split_delimiters(String allDelimiters) {
         Matcher m = Pattern.compile("(?<=\\[)[^]]+").matcher(allDelimiters);
         while (m.find()) {
             String delimiter = m.group().replaceAll(regex, "\\\\$1");
-            selectedDelimiters += delimiter + "|";
+            listDelimiters.add(delimiter);
         }
-        if (selectedDelimiters.length() == 0) {
-            selectedDelimiters = allDelimiters.substring(2, allDelimiters.length());
-            selectedDelimiters = selectedDelimiters.replaceAll(regex, "\\\\$1");
+        if (listDelimiters.size() == 0) {
+            allDelimiters = allDelimiters.substring(2, allDelimiters.length());
+            allDelimiters = allDelimiters.replaceAll(regex, "\\\\$1");
+            listDelimiters.add(allDelimiters);
         }
-        else
-            selectedDelimiters = selectedDelimiters.substring(0, selectedDelimiters.length() - 1);
-        return selectedDelimiters;
+        listDelimiters.sort((s1, s2) -> s2.length() - s1.length());
+        return String.join("|", listDelimiters);
     }
 
     private int summing(String[] numbers) throws MyException {
@@ -56,7 +58,7 @@ class StringCalculator {
             if (part2.length == 1)
                 return 0;
             number = part2[1];
-            delimiters = split_delimiters(part2[0], delimiters);
+            delimiters = split_delimiters(part2[0]);
         }
         else {
             delimiters = ",";
