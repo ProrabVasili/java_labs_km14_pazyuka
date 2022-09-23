@@ -110,16 +110,17 @@ class Main{
             e.printStackTrace();
         }
         System.out.println("-----------------------------------\n");
+        matrix2.fill(arr1);
         System.out.println("Matrix1 is equal to IMatrix1: "+matrix2.equals(imatrix2));
-
-
+        System.out.println("\n-----------------------------------\n");
+        System.out.println("HashCode of Matrix2: "+matrix2.hashCode()+"\nHashCode of IMatrix2: "+imatrix2.hashCode());
         System.out.println("\n\n_________________GENERIC MATRIX_________________\n\nGMatrix1:\n");
         GMatrix<Double> gmatrix1 = new GMatrix<>(2);
         Double[][] arr10 = {{10.0, 2.0}, {4.0, 5.0}};
         gmatrix1.fill(arr10);
         gmatrix1.getMatrix();
         System.out.println("-----------------------------------\n");
-        System.out.println("Get row from gmatrix1: "+gmatrix1.getRow(1));
+        System.out.println("Get row from gmatrix1 (1): "+gmatrix1.getRow(1));
         System.out.println("\n-----------------------------------\n\nGMatrix2:\n");
         GMatrix<String> gmatrix2 = new GMatrix<>(2);
         String[][] arr11 = {{"Hello", "world"}, {"From", "Java"}};

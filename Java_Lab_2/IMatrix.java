@@ -188,13 +188,12 @@ final class IMatrix {
         IMatrix result = new IMatrix(n), matrixCopy = new IMatrix(this), check;
         for (int i = 0;i<n;i++)
             result.matrix[i][i] = 1;
-        diagonal_not_zero(this.matrix, result.matrix);
-        gaussianElimination(this.matrix, result.matrix);
-        printMatrix("Result after Gaussian Elimination", this.matrix);
-        printMatrix("Original Matrix", matrixCopy.matrix);
+        diagonal_not_zero(matrixCopy.matrix, result.matrix);
+        gaussianElimination(matrixCopy.matrix, result.matrix);
+        printMatrix("Result after Gaussian Elimination", matrixCopy.matrix);
+        printMatrix("Original Matrix", this.matrix);
         printMatrix("Inversion Matrix", result.matrix);
-        check = new IMatrix(matrixCopy.multiplyMatrix(result));
+        check = new IMatrix(this.multiplyMatrix(result));
         printMatrix("Check answer", check.matrix);
-        this.fill(matrixCopy.matrix);
     }
 }

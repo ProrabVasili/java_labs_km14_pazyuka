@@ -88,6 +88,7 @@ class GMatrix<Type> {
         result = 31 * result + Arrays.deepHashCode(matrix);
         return result;
     }
+
     public void fill_element(Type elem, int i, int j) {
         this.matrix[i][j] = elem;
     }

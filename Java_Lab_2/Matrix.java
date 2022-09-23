@@ -217,14 +217,13 @@ class Matrix {
         Matrix result = new Matrix(n), matrixCopy = new Matrix(this), check = new Matrix(n);
         for (int i = 0;i<n;i++)
             result.matrix[i][i] = 1;
-        diagonal_not_zero(this.matrix, result.matrix);
-        gaussianElimination(this.matrix, result.matrix);
-        printMatrix("Result after Gaussian Elimination", this.matrix);
-        printMatrix("Original Matrix", matrixCopy.matrix);
+        diagonal_not_zero(matrixCopy.matrix, result.matrix);
+        gaussianElimination(matrixCopy.matrix, result.matrix);
+        printMatrix("Result after Gaussian Elimination", matrixCopy.matrix);
+        printMatrix("Original Matrix", this.matrix);
         printMatrix("Inversion Matrix", result.matrix);
-        check.matrix = matrixCopy.multiplyMatrix(result);
+        check.matrix = this.multiplyMatrix(result);
         printMatrix("Check answer", check.matrix);
-        this.fill(matrixCopy.matrix);
     }
 }
 
