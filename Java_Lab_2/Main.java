@@ -3,7 +3,7 @@ class Main{
         System.out.println("_________________MUTABLE MATRIX_________________\n");
         Matrix matrix1 = new Matrix(3), matrix2 = new Matrix(4, 5);
         matrix1.genericMatrix(4);
-        System.out.println("-----------------------------------\n\nMatrix1:\n");
+        System.out.println("Matrix1:\n");
         matrix1.getMatrix();
         System.out.println("-----------------------------------\n");
         System.out.println("Matrix1 is equal to matrix2: "+matrix1.equals(matrix2));
@@ -75,10 +75,10 @@ class Main{
         IMatrix imatrix4 = new IMatrix(imatrix3);
         imatrix4.getMatrix();
         System.out.println("-----------------------------------\n");
-        System.out.println("Size of IMatrix3: "+imatrix1.getSize());
-        System.out.println("-----------------------------------\n");
+        System.out.println("Size of IMatrix3: "+imatrix3.getSize());
+        System.out.println("\n-----------------------------------\n");
         System.out.println("HashCode of IMatrix3: "+imatrix3.hashCode());
-        System.out.println("\n-----------------------------------\n\nIMatrix1*IMatrix2:\n");
+        System.out.println("\n-----------------------------------\n\nIMatrix2*IMatrix3:\n");
         IMatrix iresult = new IMatrix(imatrix2.multiplyMatrix(imatrix3));
         iresult.getMatrix();
         System.out.println("-----------------------------------\n");
@@ -114,9 +114,11 @@ class Main{
         System.out.println("Matrix1 is equal to IMatrix1: "+matrix2.equals(imatrix2));
         System.out.println("\n-----------------------------------\n");
         System.out.println("HashCode of Matrix2: "+matrix2.hashCode()+"\nHashCode of IMatrix2: "+imatrix2.hashCode());
+
+
         System.out.println("\n\n_________________GENERIC MATRIX_________________\n\nGMatrix1:\n");
-        GMatrix<Double> gmatrix1 = new GMatrix<>(2);
-        Double[][] arr10 = {{10.0, 2.0}, {4.0, 5.0}};
+        GMatrix<Integer> gmatrix1 = new GMatrix<>(2);
+        Integer[][] arr10 = {{10, 2}, {4, 5}};
         gmatrix1.fill(arr10);
         gmatrix1.getMatrix();
         System.out.println("-----------------------------------\n");

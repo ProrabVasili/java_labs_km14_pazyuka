@@ -80,7 +80,7 @@ class Matrix {
     }
 
     public String getSize(){
-        return n+"x"+m;
+        return this.n+"x"+this.m;
     }
 
     @Override
